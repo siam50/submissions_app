@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
+import AllSubmissions from "./AllSubmissions/AllSubmissions";
 import Banner from "./Banner/Banner";
+import FavouriteSubmissions from "./FavouriteSubmissions/FavouriteSubmissions";
 
 const Home = () => {
   const [allSubmissions, setAllSubmissions] = useState(true);
@@ -41,6 +43,8 @@ const Home = () => {
           </h4>
         </div>
       </Container>
+      {allSubmissions && <AllSubmissions></AllSubmissions>}
+      {favouriteSubmissions && <FavouriteSubmissions></FavouriteSubmissions>}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { json } from "react-router-dom";
+import { json, Navigate } from "react-router-dom";
 
 const Submission = () => {
   const {
@@ -47,6 +47,7 @@ const Submission = () => {
               "hackathonSubmission",
               JSON.stringify([...savedHackathon, hackathonSubmission])
             );
+            // <Navigate to="/Home" replace={true}></Navigate>;
           } else {
             console.log("else a dhukse");
             localStorage.setItem(
