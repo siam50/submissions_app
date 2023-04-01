@@ -28,8 +28,7 @@ const AllSubmissions = ({ searchItem }) => {
                 </div>
                 <Card.Body>
                   <Card.Text className="fs-5">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    {submission.description.slice(1, 80)}...
                   </Card.Text>
                   <p className="text-secondary text-end p-0">
                     Uploaded {submission.hackathonStart}
