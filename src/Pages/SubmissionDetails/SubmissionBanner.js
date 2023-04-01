@@ -21,7 +21,11 @@ const SubmissionBanner = ({
 
   // Deleted Submission Post
   const handleDelete = () => {
-    console.log("valo");
+    const ansr = window.confirm("Are you sure! You want to Delete this Post?");
+    if (ansr) {
+      localStorage.setItem("hackathonSubmission", JSON.stringify(restPosts));
+      toast.error("Deleted Successfully");
+    }
   };
 
   // Saved Favourite Hackathon submission posts
