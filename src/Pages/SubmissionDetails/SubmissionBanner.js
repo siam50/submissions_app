@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
+import { toast } from "react-hot-toast";
 import {
   BsFillCalendarFill,
   BsFillTagFill,
@@ -18,22 +19,25 @@ const SubmissionBanner = ({
   const restPosts = posts.filter((post) => parseId !== post.id);
   console.log(restPosts);
 
-  // Submission Post Delete
+  // Deleted Submission Post
   const handleDelete = () => {
     console.log("valo");
   };
 
-  // Favourite Hackathon submission posts saved
+  // Saved Favourite Hackathon submission posts
   const handleFavSubmission = () => {
     const singlePost = posts.filter((post) => parseId === post.id);
 
+    // Checking Favourite hackathonSubmission & set Data to Local storage
     if (!localStorage.getItem("favSubmissions")) {
       localStorage.setItem("favSubmissions", JSON.stringify(singlePost));
+      toast.success("Saved Successfully");
     } else {
       const savedFavSubmission = JSON.parse(
         localStorage.getItem("favSubmissions")
       );
 
+      // Checking Same ID
       const savedSameId = savedFavSubmission.filter(
         (element) => element.id === parseId
       );
@@ -43,6 +47,9 @@ const SubmissionBanner = ({
           "favSubmissions",
           JSON.stringify([...savedFavSubmission, singlePost[0]])
         );
+        toast.success("Saved Successfully");
+      } else {
+        toast.error("Already Saved");
       }
     }
   };

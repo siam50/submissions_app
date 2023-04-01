@@ -8,7 +8,7 @@ const Banner = () => {
   return (
     <div className="bg-dark  position-relative d-flex justify-content-end ">
       <img height="416" src={banner} alt="" />
-      <Container className="d-flex justify-content-between position-absolute top-0 start-0 align-items-center">
+      <Container className="d-flex justify-content-between position-absolute top-0 start-0 align-items-center pt-5">
         <div className="px-5 text-start">
           <h1 className="text-light">Hackathon Submission</h1>
           <p className="text-light">
@@ -18,7 +18,9 @@ const Banner = () => {
             distribution
           </p>
           <Link to="/submission">
-            <button className="btn btn-success">Upload Submission</button>
+            <button className="btn btn-success p-2 fs-5">
+              Upload Submission
+            </button>
           </Link>
         </div>
         <div className="px-5">

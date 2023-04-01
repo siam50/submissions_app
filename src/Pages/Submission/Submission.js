@@ -1,19 +1,19 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { json, Navigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Submission = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  // const good = localStorage.getItem("hackathonSubmission");
-  // const godd = JSON.parse(good);
-  // console.log(godd);
+  // Handle Post Submission
   const handleSubmission = (data) => {
+    // Image Saved to Imagebb
     const image = data.coverImage[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -37,23 +37,28 @@ const Submission = () => {
             gitRepo: data.gitRepo,
             otherLink: data.otherLink,
           };
+
+          // Checking SavedhackathonSubmission & set Data to Local storage
           if (localStorage.getItem("hackathonSubmission")) {
-            console.log("if a dhukse");
             const savedHackathon = JSON.parse(
               localStorage.getItem("hackathonSubmission")
             );
+
+            // Given new post ID
             hackathonSubmission.id = savedHackathon.length + 1;
             localStorage.setItem(
               "hackathonSubmission",
               JSON.stringify([...savedHackathon, hackathonSubmission])
             );
-            // <Navigate to="/Home" replace={true}></Navigate>;
+            toast.success("Successfully Submited");
+            reset();
           } else {
-            console.log("else a dhukse");
             localStorage.setItem(
               "hackathonSubmission",
               JSON.stringify([hackathonSubmission])
             );
+            toast.success("Successfully Submited");
+            reset();
           }
         }
       })
@@ -178,7 +183,7 @@ const Submission = () => {
           />
           {errors.otherLink && <span>{errors.otherLink?.message}</span>}
         </Form.Group>
-        <Button variant="success" type="submit">
+        <Button className="p-2 fs-5" variant="success" type="submit">
           Upload Submission
         </Button>
       </form>

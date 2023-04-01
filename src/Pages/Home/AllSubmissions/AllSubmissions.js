@@ -3,8 +3,6 @@ import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const AllSubmissions = ({ searchItem }) => {
-  const allSubmissons = JSON.parse(localStorage.getItem("hackathonSubmission"));
-
   return (
     <div>
       <Container>

@@ -9,25 +9,38 @@ const Home = () => {
   const [favouriteSubmissions, setFavouriteSubmissions] = useState(false);
   const [search, setSearch] = useState("");
   const allPosts = JSON.parse(localStorage.getItem("hackathonSubmission"));
+  const favPosts = JSON.parse(localStorage.getItem("favSubmissions"));
 
-  const searchItem = allPosts.filter((item) => {
+  // All post Search Operation
+  const searchItem = allPosts?.filter((item) => {
     if (search === "") {
       return item;
     } else if (item.title.toLowerCase().includes(search.toLocaleLowerCase())) {
       return item;
     }
   });
-  console.log(searchItem);
 
+  // Favourite post Search Operation
+  const favSearchItem = favPosts?.filter((item) => {
+    if (search === "") {
+      return item;
+    } else if (item.title.toLowerCase().includes(search.toLocaleLowerCase())) {
+      return item;
+    }
+  });
+
+  // All Submission Button Handle
   const handleAllSubmissions = () => {
     setAllSubmissions(true);
     setFavouriteSubmissions(false);
   };
 
+  // Favourite Submission Button Handle
   const handleFavouriteSubmissions = () => {
     setFavouriteSubmissions(true);
     setAllSubmissions(false);
   };
+
   return (
     <div>
       <Banner></Banner>
@@ -70,7 +83,11 @@ const Home = () => {
       {allSubmissions && (
         <AllSubmissions searchItem={searchItem}></AllSubmissions>
       )}
-      {favouriteSubmissions && <FavouriteSubmissions></FavouriteSubmissions>}
+      {favouriteSubmissions && (
+        <FavouriteSubmissions
+          favSearchItem={favSearchItem}
+        ></FavouriteSubmissions>
+      )}
     </div>
   );
 };
