@@ -7,6 +7,7 @@ import {
   BsFillTrashFill,
   BsStar,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const SubmissionBanner = ({
   parseId,
@@ -16,7 +17,7 @@ const SubmissionBanner = ({
   hackathonStart,
 }) => {
   const posts = JSON.parse(localStorage.getItem("hackathonSubmission"));
-  const restPosts = posts.filter((post) => parseId !== post.id);
+  const restPosts = posts?.filter((post) => parseId !== post.id);
   console.log(restPosts);
 
   // Deleted Submission Post
@@ -30,7 +31,7 @@ const SubmissionBanner = ({
 
   // Saved Favourite Hackathon submission posts
   const handleFavSubmission = () => {
-    const singlePost = posts.filter((post) => parseId === post.id);
+    const singlePost = posts?.filter((post) => parseId === post.id);
 
     // Checking Favourite hackathonSubmission & set Data to Local storage
     if (!localStorage.getItem("favSubmissions")) {
@@ -42,7 +43,7 @@ const SubmissionBanner = ({
       );
 
       // Checking Same ID
-      const savedSameId = savedFavSubmission.filter(
+      const savedSameId = savedFavSubmission?.filter(
         (element) => element.id === parseId
       );
 
@@ -73,9 +74,11 @@ const SubmissionBanner = ({
             <h1 className="ms-5 fs-1 fw-bold">{title}</h1>
           </div>
           <div>
-            <Button className="px-5 fs-5 mb-2" variant="outline-light">
-              <BsFillTagFill className="me-2"></BsFillTagFill>Edit
-            </Button>
+            <Link to={`/edit-post/${parseId}`}>
+              <Button className="px-5 fs-5 mb-2" variant="outline-light">
+                <BsFillTagFill className="me-2"></BsFillTagFill>Edit
+              </Button>
+            </Link>
             <br />
             <Button
               onClick={handleDelete}

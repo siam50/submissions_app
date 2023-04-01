@@ -11,7 +11,9 @@ const SubmissionDetails = () => {
   const hackathonSubmission = JSON.parse(
     localStorage.getItem("hackathonSubmission")
   );
-  const details = hackathonSubmission.find((element) => element.id === parseId);
+  const details = hackathonSubmission?.find(
+    (element) => element.id === parseId
+  );
   const {
     title,
     coverImage,
