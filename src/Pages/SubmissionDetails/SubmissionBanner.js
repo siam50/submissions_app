@@ -17,9 +17,36 @@ const SubmissionBanner = ({
   const posts = JSON.parse(localStorage.getItem("hackathonSubmission"));
   const restPosts = posts.filter((post) => parseId !== post.id);
   console.log(restPosts);
+
+  // Submission Post Delete
   const handleDelete = () => {
     console.log("valo");
   };
+
+  // Favourite Hackathon submission posts saved
+  const handleFavSubmission = () => {
+    const singlePost = posts.filter((post) => parseId === post.id);
+
+    if (!localStorage.getItem("favSubmissions")) {
+      localStorage.setItem("favSubmissions", JSON.stringify(singlePost));
+    } else {
+      const savedFavSubmission = JSON.parse(
+        localStorage.getItem("favSubmissions")
+      );
+
+      const savedSameId = savedFavSubmission.filter(
+        (element) => element.id === parseId
+      );
+
+      if (savedSameId.length === 0) {
+        localStorage.setItem(
+          "favSubmissions",
+          JSON.stringify([...savedFavSubmission, singlePost[0]])
+        );
+      }
+    }
+  };
+
   return (
     <div height="416" className="bg-dark">
       <Container className=" text-light py-5">
@@ -49,7 +76,7 @@ const SubmissionBanner = ({
           </div>
         </div>
         <h5 className="py-4">{summery}</h5>
-        <BsStar className="fs-4 me-4"></BsStar>
+        <BsStar onClick={handleFavSubmission} className="fs-4 me-4"></BsStar>
         <Button variant="outline-light">
           <BsFillCalendarFill> {""}</BsFillCalendarFill> {hackathonStart}
         </Button>

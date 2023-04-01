@@ -2,14 +2,14 @@ import React from "react";
 import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const AllSubmissions = () => {
+const AllSubmissions = ({ searchItem }) => {
   const allSubmissons = JSON.parse(localStorage.getItem("hackathonSubmission"));
 
   return (
     <div>
       <Container>
         <div className="row g-5">
-          {allSubmissons?.map((submission) => (
+          {searchItem?.map((submission) => (
             <Link
               style={{ textDecoration: "none" }}
               to={`/submission-details/${submission.id}`}
