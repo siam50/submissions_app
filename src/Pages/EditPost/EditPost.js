@@ -22,7 +22,7 @@ const EditPost = () => {
     otherLink,
   } = singlePost[0];
 
-  console.log(filterAllPosts);
+  // console.log(filterAllPosts);
   const {
     register,
     handleSubmit,

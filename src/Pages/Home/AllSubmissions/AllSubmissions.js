@@ -3,7 +3,7 @@ import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const AllSubmissions = ({ searchItem }) => {
-  console.log(searchItem);
+  // console.log(searchItem);
   return (
     <div className="mb-5">
       <Container>

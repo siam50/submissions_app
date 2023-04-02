@@ -20,7 +20,7 @@ const SubmissionBanner = ({
   const favPosts = JSON.parse(localStorage.getItem("favSubmissions"));
   const restPosts = posts?.filter((post) => parseId !== post.id);
   const restFavPosts = favPosts?.filter((post) => parseId !== post.id);
-  console.log(restPosts);
+  // console.log(restPosts);
 
   // Deleted Submission Post
   const handleDelete = () => {
