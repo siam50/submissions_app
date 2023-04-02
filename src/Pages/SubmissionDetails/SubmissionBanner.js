@@ -17,7 +17,9 @@ const SubmissionBanner = ({
   hackathonStart,
 }) => {
   const posts = JSON.parse(localStorage.getItem("hackathonSubmission"));
+  const favPosts = JSON.parse(localStorage.getItem("favSubmissions"));
   const restPosts = posts?.filter((post) => parseId !== post.id);
+  const restFavPosts = favPosts?.filter((post) => parseId !== post.id);
   console.log(restPosts);
 
   // Deleted Submission Post
@@ -25,7 +27,8 @@ const SubmissionBanner = ({
     const ansr = window.confirm("Are you sure! You want to Delete this Post?");
     if (ansr) {
       localStorage.setItem("hackathonSubmission", JSON.stringify(restPosts));
-      toast.error("Deleted Successfully");
+      localStorage.setItem("favSubmissions", JSON.stringify(restFavPosts));
+      toast.success("Deleted Successfully");
     }
   };
 

@@ -11,6 +11,8 @@ const Submission = () => {
     formState: { errors },
   } = useForm();
 
+  const date = new Date();
+
   // Handle Post Submission
   const handleSubmission = (data) => {
     // Image Saved to Imagebb
@@ -28,6 +30,7 @@ const Submission = () => {
           let hackathonSubmission = {
             id: 1,
             title: data.title,
+            uploadDate: date.toDateString(),
             summery: data.summery,
             description: data.description,
             coverImage: result.data.url,
@@ -57,6 +60,7 @@ const Submission = () => {
               "hackathonSubmission",
               JSON.stringify([hackathonSubmission])
             );
+            localStorage.setItem("favSubmissions", JSON.stringify([]));
             toast.success("Successfully Submited");
             reset();
           }

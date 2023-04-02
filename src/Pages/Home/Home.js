@@ -7,9 +7,31 @@ import FavouriteSubmissions from "./FavouriteSubmissions/FavouriteSubmissions";
 const Home = () => {
   const [allSubmissions, setAllSubmissions] = useState(true);
   const [favouriteSubmissions, setFavouriteSubmissions] = useState(false);
+  const [selectDate, setSelectDate] = useState("Newest");
   const [search, setSearch] = useState("");
   const allPosts = JSON.parse(localStorage.getItem("hackathonSubmission"));
   const favPosts = JSON.parse(localStorage.getItem("favSubmissions"));
+
+  // Day wise Search Option Created
+  if (selectDate === "Newest") {
+    const newestSort = (a, b) => {
+      const dateA = new Date(a.hackathonStart);
+      const dateB = new Date(b.hackathonStart);
+      if (dateA < dateB) return 1;
+      else if (dateA > dateB) return -1;
+      return 0;
+    };
+    allPosts?.sort(newestSort);
+  } else if (selectDate === "Oldest") {
+    const oldestSort = (a, b) => {
+      const dateA = new Date(a.hackathonStart);
+      const dateB = new Date(b.hackathonStart);
+      if (dateA > dateB) return 1;
+      else if (dateA < dateB) return -1;
+      return 0;
+    };
+    allPosts?.sort(oldestSort);
+  }
 
   // All post Search Operation
   const searchItem = allPosts?.filter((item) => {
@@ -72,11 +94,20 @@ const Home = () => {
           </div>
           <div>
             <input
-              className="p-2 rounded fs-4"
+              className="p-2 rounded fs-4 me-5"
               type="text"
               placeholder="Search"
               onChange={(event) => setSearch(event.target.value)}
             />
+            <select
+              onChange={(event) => setSelectDate(event.target.value)}
+              className="p-2 rounded fs-4 text-secondary"
+              name="select"
+              id=""
+            >
+              <option value="Newest">Newest</option>
+              <option value="Oldest">Oldest</option>
+            </select>
           </div>
         </div>
       </Container>

@@ -25,7 +25,7 @@ const SubmissionDetails = () => {
     otherLink,
     summery,
   } = details;
-  // console.log(details);
+
   return (
     <div>
       <SubmissionBanner

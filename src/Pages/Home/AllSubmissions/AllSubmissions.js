@@ -3,6 +3,7 @@ import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const AllSubmissions = ({ searchItem }) => {
+  console.log(searchItem);
   return (
     <div>
       <Container>
@@ -31,7 +32,7 @@ const AllSubmissions = ({ searchItem }) => {
                     {submission.description.slice(1, 80)}...
                   </Card.Text>
                   <p className="text-secondary text-end p-0">
-                    Uploaded {submission.hackathonStart}
+                    Hackathon Start {submission.hackathonStart}
                   </p>
                 </Card.Body>
               </Card>
