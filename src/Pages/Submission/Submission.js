@@ -85,7 +85,9 @@ const Submission = () => {
             {...register("title", { required: "This field is required" })}
             placeholder="Title of your submission"
           />
-          {errors.title && <span>{errors.title?.message}</span>}
+          {errors.title && (
+            <span className="text-danger">{errors.title?.message}</span>
+          )}
         </Form.Group>
         <Form.Group className="mb-5">
           <Form.Label className="fs-4 fw-normal">Summery</Form.Label>
@@ -95,7 +97,9 @@ const Submission = () => {
             {...register("summery", { required: "This field is required" })}
             placeholder="A short summery of your submission"
           />
-          {errors.summery && <span>{errors.summery?.message}</span>}
+          {errors.summery && (
+            <span className="text-danger">{errors.summery?.message}</span>
+          )}
         </Form.Group>
         <Form.Group className="mb-5">
           <Form.Label className="fs-4 fw-normal">Description</Form.Label>
@@ -107,7 +111,9 @@ const Submission = () => {
             {...register("description", { required: "This field is required" })}
             placeholder="Write a long description of your project"
           />
-          {errors.description && <span>{errors.description?.message}</span>}
+          {errors.description && (
+            <span className="text-danger">{errors.description?.message}</span>
+          )}
         </Form.Group>
         <Form.Group className="mb-5">
           <Form.Label className="fs-4 fw-normal">Cover Image</Form.Label>
@@ -117,7 +123,9 @@ const Submission = () => {
             {...register("coverImage", { required: "This field is required" })}
             placeholder="A short summery of your submission"
           />
-          {errors.coverImage && <span>{errors.coverImage?.message}</span>}
+          {errors.coverImage && (
+            <span className="text-danger">{errors.coverImage?.message}</span>
+          )}
         </Form.Group>
         <Form.Group className="mb-5">
           <Form.Label className="fs-4 fw-normal">Hackathon Name</Form.Label>
@@ -129,7 +137,9 @@ const Submission = () => {
             })}
             placeholder="Enter the name of the hackathon"
           />
-          {errors.hackathonName && <span>{errors.hackathonName?.message}</span>}
+          {errors.hackathonName && (
+            <span className="text-danger">{errors.hackathonName?.message}</span>
+          )}
         </Form.Group>
         <div className="row w-75">
           <Form.Group className="mb-5 col">
@@ -145,7 +155,9 @@ const Submission = () => {
               placeholder="Enter the name of the hackathon"
             />
             {errors.hackathonStart && (
-              <span>{errors.hackathonStart?.message}</span>
+              <span className="text-danger">
+                {errors.hackathonStart?.message}
+              </span>
             )}
           </Form.Group>
           <Form.Group className="mb-5 col">
@@ -160,7 +172,11 @@ const Submission = () => {
               })}
               placeholder="Enter the name of the hackathon"
             />
-            {errors.hackathonEnd && <span>{errors.hackathonEnd?.message}</span>}
+            {errors.hackathonEnd && (
+              <span className="text-danger">
+                {errors.hackathonEnd?.message}
+              </span>
+            )}
           </Form.Group>
         </div>
         <Form.Group className="mb-5">
@@ -173,7 +189,9 @@ const Submission = () => {
             })}
             placeholder="Enter your Github repository Link"
           />
-          {errors.gitRepo && <span>{errors.gitRepo?.message}</span>}
+          {errors.gitRepo && (
+            <span className="text-danger">{errors.gitRepo?.message}</span>
+          )}
         </Form.Group>
         <Form.Group className="mb-5">
           <Form.Label className="fs-4 fw-normal">Other Links</Form.Label>
@@ -185,7 +203,9 @@ const Submission = () => {
             })}
             placeholder="You can upload your Video demo"
           />
-          {errors.otherLink && <span>{errors.otherLink?.message}</span>}
+          {errors.otherLink && (
+            <span className="text-danger">{errors.otherLink?.message}</span>
+          )}
         </Form.Group>
         <Button className="p-2 fs-5" variant="success" type="submit">
           Upload Submission

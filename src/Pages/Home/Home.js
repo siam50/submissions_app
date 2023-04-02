@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import AllSubmissions from "./AllSubmissions/AllSubmissions";
 import Banner from "./Banner/Banner";
 import FavouriteSubmissions from "./FavouriteSubmissions/FavouriteSubmissions";
+import { BsSearch } from "react-icons/bs";
 
 const Home = () => {
   const [allSubmissions, setAllSubmissions] = useState(true);

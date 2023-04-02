@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const AllSubmissions = ({ searchItem }) => {
   console.log(searchItem);
   return (
-    <div>
+    <div className="mb-5">
       <Container>
         <div className="row g-5">
           {searchItem?.map((submission) => (

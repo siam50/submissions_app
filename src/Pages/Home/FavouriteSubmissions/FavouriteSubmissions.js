@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const FavouriteSubmissions = ({ favSearchItem }) => {
   return (
-    <div>
+    <div className="mb-5">
       <Container>
         <div className="row g-5">
           {favSearchItem?.map((submission) => (
